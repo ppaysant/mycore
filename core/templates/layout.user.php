@@ -20,6 +20,7 @@
 		<link rel="icon" href="<?php print_unescaped(image_path($_['appid'], 'favicon.ico')); /* IE11+ supports png */ ?>">
 		<link rel="apple-touch-icon-precomposed" href="<?php print_unescaped(image_path($_['appid'], 'favicon-touch.png')); ?>">
 		<link rel="mask-icon" sizes="any" href="<?php print_unescaped(image_path($_['appid'], 'favicon-mask.svg')); ?>" color="#1d2d44">
+		<link rel="manifest" href="<?php print_unescaped(image_path($_['appid'], 'manifest.json')); ?>">
 		<?php foreach($_['cssfiles'] as $cssfile): ?>
 			<link rel="stylesheet" href="<?php print_unescaped($cssfile); ?>">
 		<?php endforeach; ?>
@@ -31,7 +32,6 @@
 		<?php endforeach; ?>
 		<?php print_unescaped($_['headers']); ?>
 	</head>
-	<?php flush(); ?>
 	<body id="<?php p($_['bodyid']);?>">
 	<?php include('layout.noscript.warning.php'); ?>
 	<div id="notification-container">
@@ -57,7 +57,7 @@
 						}
 					?>
 				</h1>
-				<div class="icon-caret"></div>
+				<img alt="" class="caret" src="<?php print_unescaped(image_path('', 'actions/caret.svg')); ?>">
 			</a>
 
 			<div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>

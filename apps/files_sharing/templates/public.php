@@ -19,7 +19,15 @@ OCP\Util::addScript('files', 'fileinfomodel');
 OCP\Util::addScript('files', 'newfilemenu');
 OCP\Util::addScript('files', 'files');
 OCP\Util::addScript('files', 'filelist');
-OCP\Util::addscript('files', 'keyboardshortcuts');
+OCP\Util::addScript('files', 'keyboardshortcuts');
+
+// OpenGraph Support: http://ogp.me/
+OCP\Util::addHeader('meta', ['property' => "og:title", 'content' => $theme->getName() . ' - ' . $theme->getSlogan()]);
+OCP\Util::addHeader('meta', ['property' => "og:description", 'content' => $l->t('%s is publicly shared', [$_['filename']])]);
+OCP\Util::addHeader('meta', ['property' => "og:site_name", 'content' => $theme->getName()]);
+OCP\Util::addHeader('meta', ['property' => "og:url", 'content' => $_['shareUrl']]);
+OCP\Util::addHeader('meta', ['property' => "og:type", 'content' => "object"]);
+OCP\Util::addHeader('meta', ['property' => "og:image", 'content' => $_['previewImage']]);
 ?>
 
 <?php if ($_['previewSupported']): /* This enables preview images for links (e.g. on Facebook, Google+, ...)*/?>

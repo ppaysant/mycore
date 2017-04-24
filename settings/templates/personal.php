@@ -9,7 +9,6 @@
 
 
 // My CoRe: change left menu
-
 foreach($_['forms'] as $key => $form) {
 	if ($form['anchor'] == 'avatar') {
 		$_['forms'][$key]['anchor'] = 'quota';
