@@ -307,11 +307,14 @@
 				}
 			}
 			var insert = $("<div class='share-autocomplete-item'/>");
-			var avatar = $("<div class='avatardiv'></div>").appendTo(insert);
-			if (item.value.shareType === OC.Share.SHARE_TYPE_USER) {
-				avatar.avatar(item.value.shareWith, 32, undefined, undefined, undefined, item.label);
-			} else {
-				avatar.imageplaceholder(text, undefined, 32);
+
+			if(this.configModel.areAvatarsEnabled()) {
+				var avatar = $("<div class='avatardiv'></div>").appendTo(insert);
+				if (item.value.shareType === OC.Share.SHARE_TYPE_USER) {
+					avatar.avatar(item.value.shareWith, 32, undefined, undefined, undefined, item.label);
+				} else {
+					avatar.imageplaceholder(text, undefined, 32);
+				}
 			}
 
 			$("<div class='autocomplete-item-text'></div>")
@@ -399,7 +402,7 @@
 					},
 					source: this.autocompleteHandler,
 					select: this._onSelectRecipient
-				}).data('ui-autocomplete')._renderItem = this.autocompleteRenderItem;
+				}).data('ui-autocomplete')._renderItem = _.bind(this.autocompleteRenderItem, this);
 			}
 
 			this.resharerInfoView.$el = this.$el.find('.resharerInfoView');
